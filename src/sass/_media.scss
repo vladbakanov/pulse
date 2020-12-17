@@ -18,11 +18,30 @@
     margin: 0 auto;
     margin-top: 36px;
   }
+  .carousel {
+    &__inner {
+      .slick-prev{
+        left: 0;
+      }
+      .slick-next {
+        right: 0;
+        left: auto;
+      }
+    }
+  }
 }
 
 @media (max-width: 991px) {
   .header {
     justify-content: space-around;
+  }
+  .catalog {
+    &__content {
+      justify-content: space-around;
+    }
+  }
+  .feed {
+    padding: 70px 5px;
   }
 }
 
@@ -45,6 +64,11 @@
   .consultation {
     &__descr {
       font-size: 18px;
+    }
+  }
+  .slick-slide {
+    img {
+      width: 100%;
     }
   }
 }
@@ -96,6 +120,26 @@
   .consultation {
     &__descr {
       font-size: 15px;
+    }
+  }
+  .catalog{
+    &__tabs {
+      display: list-item;
+      li {
+        margin: 6px auto;
+      }
+    }
+  }
+  .feed {
+    &__item {
+      display: block;
+    }
+    &__photo {
+      display: block;
+      margin: 0 auto;
+    }
+    &__descr {
+      margin: 20px 10px
     }
   }
 }
