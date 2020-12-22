@@ -51,4 +51,73 @@ $(document).ready(function(){
   toggleSlide('.catalog-item__link');
   toggleSlide('.catalog-item__back');
 
+
+
+  //modal
+  $('[data-modal=consultation]').on('click', function() {
+    $('.overlay, #consultation').fadeIn('fast');
+  });
+  $('.modal__close').on('click', function() {
+    $('.overlay, #consultation, #order, #thanks').fadeOut('fast');
+  });
+  
+
+  $('.button_mini').each(function(i) {
+    $(this).on('click', function() {
+      $('#order .modal__descr').text($('.catalog-item__subtitle').eq(i).text());
+      $('.overlay, #order').fadeIn('fast');
+    })
+  });
+
+  function validateForms(form) {
+    $(form).validate({
+      rules: {
+        name: {
+          required: true,
+          minlength: 2
+        },
+        phone: "required",
+        email: {
+          required: true,
+          email: true
+        }
+      },
+      messages: {
+        name: {
+          required: "Пожалуйста введите свое имя",
+          minlength: jQuery.validator.format("Введите {0} символов")
+        },
+        phone: {
+          required: "Пожайлутса, введите свой телефон",
+          email: "Нерпвильно введен телефон"
+        },
+        email: {
+          required: "Пожайлутса, введите свою почту",
+          email: "Нерпвильно введен адрес, пример name@domain.com"
+        }
+      }
+    });
+  }
+  validateForms('#consultation-form');
+  validateForms('#consultation form');
+  validateForms('#order form');
+
+  //Modal Masks
+  $('input[name=phone]').mask("+38 (999) 999-9999");
+
+  $('form').submit(function(e) {
+    e.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: "mailer/smart.php",
+      data: $(this).serialize()
+    }).done(function() {
+      $(this).find("input").val("");
+      $('#consultation, #order').fadeOut();
+      $('.overlay, #thanks').fadeIn('fast');
+
+      $('form').trigger('reset');
+    });
+    return false;
+  });
 });

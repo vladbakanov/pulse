@@ -149,4 +149,9 @@
       position: relative;
     }
   }
+  .modal {
+    &__close {
+      right: 40px;
+    }
+  }
 }
