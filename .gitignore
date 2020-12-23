@@ -4,6 +4,10 @@
 /node_modules
 /src/js/digitalBush-jquery.maskedinput-9672630
 /src/js/jquery-validation-1.19.2
+/пульсометры.psd
+/package.json
+/package-lock.json
+/src/sass
 
 
 # testing

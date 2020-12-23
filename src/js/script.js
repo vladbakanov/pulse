@@ -120,4 +120,21 @@ $(document).ready(function(){
     });
     return false;
   });
+
+  // scroll up
+  $(window).scroll(function() {
+    if($(this).scrollTop()>1600) {
+      $('.pageup').fadeIn();
+    } else {
+      $('.pageup').fadeOut();
+    }
+  })
+
+  $("body").on('click', '[href*=#up]', function(e){
+    var fixed_offset = 100;
+    $('html,body').stop().animate({ scrollTop: $(this.hash).offset().top - fixed_offset }, 1000);
+    e.preventDefault();
+  });
+
+  new WOW().init();
 });

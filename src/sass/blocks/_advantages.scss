@@ -32,4 +32,11 @@
     color: #ff0000;
     text-decoration: none;
   }
+  &__icon {
+    &_animation {
+      &:hover {
+        animation: heart 2s ease infinite;
+      }
+    }
+  }
 }
