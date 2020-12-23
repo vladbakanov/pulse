@@ -122,6 +122,9 @@
       }
     }
     &__list {
+      ul {
+        padding-inline-start: 0px;
+      }
       position: relative;
       width: 50%;
       margin-left: 20px;
